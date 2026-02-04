@@ -54,8 +54,8 @@ const Hero = () => {
         style={{ backgroundImage: `url(${heroBg})` }}
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 overlay-dark" />
+      {/* Overlay - gradient suave de baixo para cima */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
 
       {/* Decorative Elements */}
       <div className="absolute top-20 left-10 w-32 h-32 border border-gold/20 rounded-full animate-float opacity-30" />

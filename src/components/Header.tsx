@@ -40,8 +40,8 @@ const Header = () => {
       ref={headerRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-charcoal/95 backdrop-blur-md shadow-lg py-3"
-          : "bg-transparent py-6"
+          ? "bg-charcoal/70 backdrop-blur-xl shadow-lg py-3 border-b border-cream/10"
+          : "bg-charcoal/20 backdrop-blur-sm py-6"
       }`}
     >
       <div className="container-custom flex items-center justify-between">
