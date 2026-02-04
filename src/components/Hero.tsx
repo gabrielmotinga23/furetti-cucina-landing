@@ -3,56 +3,41 @@ import gsap from "gsap";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      tl.fromTo(
-        titleRef.current,
-        { y: 100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.2, delay: 0.5 }
+    tl.fromTo(
+      titleRef.current,
+      { y: 100, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.2, delay: 0.5 }
+    )
+      .fromTo(
+        subtitleRef.current,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1 },
+        "-=0.6"
       )
-        .fromTo(
-          subtitleRef.current,
-          { y: 50, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1 },
-          "-=0.6"
-        )
-        .fromTo(
-          ctaRef.current,
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8 },
-          "-=0.4"
-        );
+      .fromTo(
+        ctaRef.current,
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8 },
+        "-=0.4"
+      );
 
-      // Parallax effect on scroll
-      gsap.to(heroRef.current?.querySelector(".hero-bg"), {
-        yPercent: 30,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-    }, heroRef);
-
-    return () => ctx.revert();
+    return () => {
+      tl.kill();
+    };
   }, []);
 
   return (
-    <section ref={heroRef} className="relative h-screen min-h-[700px] overflow-hidden bg-charcoal">
-      {/* Background Image */}
-      <div
-        className="hero-bg absolute -inset-4 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      />
+    <section 
+      className="relative h-screen min-h-[700px] bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${heroBg})` }}
+    >
 
       {/* Overlay - gradient suave de baixo para cima */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
