@@ -50,7 +50,7 @@ const Hero = () => {
     <section ref={heroRef} className="relative h-screen min-h-[700px] overflow-hidden bg-charcoal">
       {/* Background Image */}
       <div
-        className="hero-bg absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
+        className="hero-bg absolute -inset-4 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
 
